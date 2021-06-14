@@ -7,13 +7,13 @@ const cors = require ('cors');
 const servers = express();
 servers.use(cors());
 
-const PORT =3020;
+const PORT = process.env.PORT;
 // http://localhost:3020/
 servers.get('/', (req, res) => {
     res.send('home route')
 })
 
-// http://localhost:3020/dataOfWeather?dataOfcity=city
+// http://localhost:PORT/dataOfWeather?dataOfcity=city
 servers.get('/dataOfWeather',(req,res)=>{
     // let city=req.query.dataOfcity
     let city=req.query.dataOfcity
