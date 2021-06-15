@@ -24,7 +24,7 @@ servers.get('/dataOfmovie',movieResult)//line 51
 
 
 function homePage(req, res){
-    res.send('home route');
+    res.send('home route class08');
 };
 
 function weatheResult(req,res){//line 72
