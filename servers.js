@@ -8,6 +8,7 @@ const axios = require('axios');
 const servers = express();
 servers.use(cors());
 
+
 const PORT = process.env.PORT;//line 91
 const keyOfWeather= process.env.keyOfWeather;//line 32
 const keyOfMovie= process.env.keyOfMovie;//line 55
@@ -20,6 +21,7 @@ servers.get('/dataOfWeather',weatheResult) //line 28
 
 //localhost:3030/dataOfmovie?region=DE&language=en-ENrelease_date.gte=2021-05-15&release_date.lte=2021-06-15&with_release_type=3|2
 servers.get('/dataOfmovie',movieResult)//line 51
+
 
 function homePage(req, res){
     res.send('home route class08');
