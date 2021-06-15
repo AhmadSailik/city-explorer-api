@@ -8,7 +8,7 @@ const servers = express();
 servers.use(cors());
 
 const PORT = process.env.PORT;
-// http://localhost:3020/
+// http://localhost:3030/
 servers.get('/', (req, res) => {
     res.send('home route')
 })
