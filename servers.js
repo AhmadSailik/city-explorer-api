@@ -9,7 +9,7 @@ const servers = express();
 servers.use(cors());
 
 
-const PORT = process.env.PORT|3030;
+const PORT = process.env.PORT;
 
 const movieResult=require('./modules/Movie')
 const weatheResultAPI=require('./modules/WeatherAPI')
