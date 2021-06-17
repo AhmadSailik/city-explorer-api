@@ -2,23 +2,32 @@ const axios = require('axios');
 
 const keyOfMovie= process.env.keyOfMovie;
 
-function movieResult(req,res){
-    let cityName=req.query.query;
-   
-    
-    const movieURL=` https://api.themoviedb.org/3/search/movie?api_key=${keyOfMovie}&query=${cityName}`
-    axios.get(movieURL).then(resultOfmovie=>{
+let movieMemory={};
 
+function movieResult(req,res){
+    let cityName=req.query.query.toLowerCase();
+    const movieURL=` https://api.themoviedb.org/3/search/movie?api_key=${keyOfMovie}&query=${cityName}`
+    
+if(movieMemory[cityName]!=undefined){
+    res.send(movieMemory[cityName]);
+    console.log('from Memory')
+}else{
+    axios.get(movieURL).then(resultOfmovie=>{
         const result = resultOfmovie.data.results.map(item=>{
         return new Movie(item)
             
    })
+   console.log('from API')
+   movieMemory[cityName]=result;
    res.send(result);
 
     })
     .catch(err =>{
         res.send(`there is an error in getting the data => ${err}`);
     })
+    
+}
+       
     
 };
 
